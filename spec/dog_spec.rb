@@ -3,7 +3,7 @@ require 'pry'
 
 describe "Dog" do
 
-  let(:teddy) {Dog.new(name: "Teddy", breed: "cockapoo")}
+  let(:teddy) {Dog.new("Teddy", "cockapoo")}
 
   before(:each) do
     DB[:conn].execute("DROP TABLE IF EXISTS dogs")
@@ -92,7 +92,7 @@ describe "Dog" do
       expect(pat.breed).to eq(row[2])
     end
   end
-  
+
   describe '.find_by_id' do
     it 'returns a new dog object by id' do
       dog = Dog.create(name: "Kevin", breed: "shepard")
@@ -129,7 +129,7 @@ describe "Dog" do
     end
   end
 
-  
+
 
   describe '.find_by_name' do
     it 'returns an instance of dog that matches the name from the DB' do
